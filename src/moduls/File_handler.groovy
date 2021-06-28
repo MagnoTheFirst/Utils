@@ -20,7 +20,11 @@ class File_handler {
 		return lines;
 	}
 	
-	
+	/**
+	 * This method replaces the content of a line with a string of your choice
+	 * @param input
+	 * @param replace = String that replace the original String of the Line in the File
+	 * */
 	public String replace_line_content(String input, String replace)
 	{
 		String file_content = this.source_file.getText().toString();
@@ -31,5 +35,17 @@ class File_handler {
 		return file_content;
 	}
 	
-	
+	private String get_specific_line(int index_of_line) {
+		int counter = 0;
+		String specific_line;
+		source_file.eachLine{ line -> counter++;}
+		for(int i = 0; i < index_of_line ; i++) {
+			if(i == index_of_line) {
+
+
+			}
+		}
+		
+	}
 }
+

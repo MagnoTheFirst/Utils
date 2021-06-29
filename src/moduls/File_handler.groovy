@@ -34,8 +34,6 @@ class File_handler {
 					this.source_file.write("");
 					println source_file.exists()
 				}
-				
-				
 	}
 	
 	/**
@@ -44,7 +42,7 @@ class File_handler {
 	 * @param source_file File wich should be 
 	 * 
 	 * */
-	private ArrayList<String> get_Lines_of_File()
+	protected ArrayList<String> get_Lines_of_File()
 	{
 		ArrayList<String> lines = new  ArrayList<String>()
 		source_file.eachLine
@@ -69,17 +67,15 @@ class File_handler {
 		return file_content;
 	}
 	
-	private String get_specific_line(int index_of_line) {
-		int counter = 0;
-		String specific_line;
-		source_file.eachLine{ line -> counter++;}
-		for(int i = 0; i < index_of_line ; i++) {
-			if(i == index_of_line) {
-
-
-			}
+	public String get_specific_line(int index_of_line) throws IndexOutOfBoundsException {
+		try {
+			ArrayList<String> lines = get_Lines_of_File();
+			return lines.get(index_of_line);
+		} catch (Exception e) {
+			println "The given line does not exists in the File of " + this.getClass();
+			e.printStackTrace()
+			
 		}
-		
 	}
 	
 	
@@ -98,7 +94,8 @@ class File_handler {
 	}
 	
 	
-	public void overwrite_file(String input) {
+	public void overwrite_file(String input) 
+	{
 		source_file.write(input);
 	}
 	
@@ -110,6 +107,22 @@ class File_handler {
 	{
 		source_file.write("");
 	}
+	
+	public void remove_empty_lines() {
+		println source_file.getText()
+		String tmp=" ";
+		String buffer = source_file.getText().toString();
+		String[] file_content = buffer.split("\n").toString();
+		for(int i = 0; i < file_content.length ; i++) {
+			println file_content[i]
+			if(!file_content[i].equals("\n") {
+				buffer += file_content[i];
+			}
+		}
+		
+	}
+	
+	
 	
 }
 

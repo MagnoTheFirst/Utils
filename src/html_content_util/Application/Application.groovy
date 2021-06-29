@@ -1,14 +1,15 @@
 package html_content_util.Application
 
 import moduls.File_handler
+import moduls.Html_file_util
 
 class Application {
 	
 	public static void main(String[] args) {
 		println "C:/Users/taalaal4/LAB/"+"test.txt"
-		File_handler f1 = new File_handler("C:/Users/taalaal4/LAB/", "bla.txt");
-		f1.file_writer("test1\ntest2")
-		f1.overwrite_file("alejandro")
-		f1.clear_file()
+
+		Html_file_util test1 = new Html_file_util("C:/Users/taalaal4/LAB/", "bla.txt");
+		test1.remove_tag("<html>", " </html>");
+		test1.remove_empty_lines();
 	}
 }

@@ -1,16 +1,50 @@
 package moduls
 
+import exeptions.MissingFileTypException
+import exeptions.UncompatibleFileTypException
+
 class File_handler {
 	
-	
+	String path;
+	String filename;
 	File source_file;
 
-	public File_handler(String path) {
-		// TODO Auto-generated constructor stub
-		this.source_file = new File(path);
+	
+	/**
+	 * This class can handle a existing file or it creates a new one.
+	 * This class can neither handle .pdf .exe and .jar nor bin
+	 * @param path Path to the directory where the file should be created
+	 * @param filename Filename should contain the file type .md, .json, .txt, .log ....
+	 * 
+	 * 
+	 * */
+	public File_handler(String path, String filename)
+	{
+	
+				this.filename = filename;
+				this.path = path;
+				this.source_file = new File(path + filename);
+				
+				if(this.source_file.exists()) {
+					println "file exists"
+
+				}
+				else {
+					println "file does  not exists"
+					this.source_file.write("");
+					println source_file.exists()
+				}
+				
+				
 	}
 	
-	private ArrayList<String> get_Lines_of_File(File source_file)
+	/**
+	 * This method takes a File and splits it lines into an ArrayList. 
+	 * Each Line is one index at the ArrayList. Each Line will be trimmed
+	 * @param source_file File wich should be 
+	 * 
+	 * */
+	private ArrayList<String> get_Lines_of_File()
 	{
 		ArrayList<String> lines = new  ArrayList<String>()
 		source_file.eachLine
@@ -47,5 +81,35 @@ class File_handler {
 		}
 		
 	}
+	
+	
+	/**
+	 * 
+	 * This method appends a String to the given destination file. 
+	 * If the File doesnt exists it creates a file at the given destination
+	 * 
+	 * @param destination_file The file where your String should be added
+	 * @param input The String you want to add to the file. It will be appended at the last line of File
+	 * 
+	 * */
+	public void file_writer(String input) 
+	{
+			source_file.append("\n" + input)
+	}
+	
+	
+	public void overwrite_file(String input) {
+		source_file.write(input);
+	}
+	
+	/**
+	 * This methods removes all content of a given File.
+	 * @param destination_file 
+	 * */
+	public void clear_file()
+	{
+		source_file.write("");
+	}
+	
 }
 

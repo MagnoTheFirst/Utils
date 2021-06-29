@@ -109,17 +109,17 @@ class File_handler {
 	}
 	
 	public void remove_empty_lines() {
-		println source_file.getText()
-		String tmp=" ";
-		String buffer = source_file.getText().toString();
-		String[] file_content = buffer.split("\n").toString();
-		for(int i = 0; i < file_content.length ; i++) {
-			println file_content[i]
-			if(!file_content[i].equals("\n") {
-				buffer += file_content[i];
+		ArrayList<String> file_content = get_Lines_of_File();
+		println file_content.size();
+		source_file.write("");
+		for(int i =0; i < file_content.size; i++) {
+
+			String buffer = file_content.get(i);
+			if(!buffer.isEmpty()) 
+			{
+				source_file.append(buffer + "\n");
 			}
 		}
-		
 	}
 	
 	

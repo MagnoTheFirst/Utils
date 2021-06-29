@@ -28,13 +28,12 @@ public class Html_file_util extends File_handler{
 	}
 	
 	public void remove_tag(String opening_tag, String closing_tag) {
-		
-		String file_content = source_file.getText().toString();
-		
-		file_content = file_content.replaceAll(opening_tag, "");
-		file_content = file_content.replaceAll(closing_tag, "");
-		
-		source_file.write(file_content);
+			String file_content = this.source_file.getText().toString();
+			file_content = file_content.replaceAll(closing_tag, "");
+			file_content = file_content.replaceAll(opening_tag, "");
+			this.source_file.write(file_content);
 	}
 
+	
+	
 }

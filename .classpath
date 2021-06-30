@@ -4,5 +4,7 @@
 	<classpathentry kind="con" path="GROOVY_DSL_SUPPORT"/>
 	<classpathentry kind="con" path="GROOVY_SUPPORT"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="tests"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

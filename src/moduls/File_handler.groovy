@@ -63,7 +63,7 @@ class File_handler {
 		file_content = file_content.replaceAll(input, replace);
 		println(file_content);
 		this.source_file.write(file_content);
-		
+
 		return file_content;
 	}
 	
@@ -88,27 +88,35 @@ class File_handler {
 	 * @param input The String you want to add to the file. It will be appended at the last line of File
 	 * 
 	 * */
-	public void file_writer(String input) 
+	public String file_writer(String input) 
 	{
 			source_file.append("\n" + input)
+			return source_file.getText();
 	}
 	
 	
-	public void overwrite_file(String input) 
+	public String overwrite_file(String input) 
 	{
 		source_file.write(input);
+		return source_file.getText();
 	}
 	
 	/**
 	 * This methods removes all content of a given File.
 	 * @param destination_file 
 	 * */
-	public void clear_file()
+	public String clear_file()
 	{
 		source_file.write("");
+		return source_file.getText();
+		
 	}
 	
-	public void remove_empty_lines() {
+	
+	/**
+	 * If the file contains empty lines,  this method will remove them. 
+	 * */
+	public String remove_empty_lines() {
 		ArrayList<String> file_content = get_Lines_of_File();
 		println file_content.size();
 		source_file.write("");
@@ -120,6 +128,35 @@ class File_handler {
 				source_file.append(buffer + "\n");
 			}
 		}
+		return source_file.getText();
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+
+	public File getSource_file() {
+		return source_file;
+	}
+	
+	public String get_file_content() {
+		return this.source_file.getText();
+	}
+
+	public void setSource_file(File source_file) {
+		this.source_file = source_file;
 	}
 	
 	

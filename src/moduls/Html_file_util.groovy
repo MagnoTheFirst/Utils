@@ -2,7 +2,12 @@ package moduls;
 
 import java.io.File;
 import java.util.ArrayList;
-
+/**
+ * @author taalaal4
+ * This Class was created out of the need to read specific values out of a html file.
+ * First remove all the tags until only the needed value remains. 
+ * I used it to read values out of an monitoring dashboard to create metrics.
+ * */
 public class Html_file_util extends File_handler{
 
 	String path;
